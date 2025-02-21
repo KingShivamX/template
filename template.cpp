@@ -26,8 +26,6 @@ using namespace std;
 #define frrb(i,a,n) for(int i=(n)-1; i>=(a); i--)
 #define MOD 1000000007
 
-int modinv(int a) { return modpow(a, MOD - 2); }
-int moddiv(int a, int b) { return modmul(a, modinv(b)); }
 int modmul(int a, int b) { return ((a % MOD) * (b % MOD)) % MOD; }
 int modadd(int a, int b) { return ((a % MOD) + (b % MOD)) % MOD; }
 int modsub(int a, int b) { return ((a % MOD) - (b % MOD) + MOD) % MOD; }
@@ -44,9 +42,9 @@ template<typename K, typename V> istream &operator>>(istream &cin, pair<K, V> &a
 template<typename K, typename V> ostream &operator<<(ostream &cout, const pair<K, V> &a) { return cout << a.first << ' ' << a.second; }
 template<typename K, typename V> ostream &operator<<(ostream &cout, const vector<pair<K, V>> &a) { for (auto &x : a) cout << x << '\n'; return cout; }
 template<typename T> ostream &operator<<(ostream &cout, const vector<T> &a) { int n = a.size(); if (!n) return cout; cout << a[0]; for (int i = 1; i < n; i++) cout << ' ' << a[i]; return cout; }
-template<typename T, typename=enable_if_t<is_same_v<T,set<typename T::key_type>>||is_same_v<T,multiset<typename T::key_type>>||is_same_v<T,ordered_set<typename T::key_type>>||is_same_v<T,ordered_multiset<typename T::key_type>>>> ostream &operator<<(ostream &cout,const T &a){for(auto it=a.begin();it!=a.end();++it)cout<<(it==a.begin()?"":" ")<<*it;return cout; }
-template<typename T, typename=enable_if_t<is_same_v<T,map<typename T::key_type,typename T::mapped_type>>||is_same_v<T,multimap<typename T::key_type,typename T::mapped_type>>||is_same_v<T,ordered_map<typename T::key_type,typename T::mapped_type>>||is_same_v<T,ordered_multimap<typename T::key_type,typename T::mapped_type>>>> ostream &operator<<(ostream &cout,const T &a){for(const auto &x:a)cout<<x.first<<' '<<x.second<<'\n';return cout; }
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+template<typename T> enable_if_t<is_same_v<T,set<typename T::key_type>>||is_same_v<T,multiset<typename T::key_type>>||is_same_v<T,ordered_set<typename T::key_type>>||is_same_v<T,ordered_multiset<typename T::key_type>>,ostream&>operator<<(ostream&cout,const T&a){for(auto it=a.begin();it!=a.end();++it)cout<<(it==a.begin()?"":" ")<<*it;return cout;}
+template<typename T> enable_if_t<is_same_v<T,map<typename T::key_type,typename T::mapped_type>>||is_same_v<T,multimap<typename T::key_type,typename T::mapped_type>>||is_same_v<T,ordered_map<typename T::key_type,typename T::mapped_type>>||is_same_v<T,ordered_multimap<typename T::key_type,typename T::mapped_type>>,ostream&>operator<<(ostream&cout,const T&a){for(const auto&x:a)cout<<x.first<<' '<<x.second<<'\n';return cout;}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 void solve(){
