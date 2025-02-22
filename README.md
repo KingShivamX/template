@@ -34,21 +34,20 @@ int modmul(int a, int b) { return ((a % MOD) * (b % MOD)) % MOD; }
 int modadd(int a, int b) { return ((a % MOD) + (b % MOD)) % MOD; }
 int modsub(int a, int b) { return ((a % MOD) - (b % MOD) + MOD) % MOD; }
 int modfac(int n) { int res = 1; frr(i, 2, n+1) res = modmul(res, i); return res; }
-int modpow(int a, int p) { int res = 1; for (a %= MOD; p; p >>= 1, a = modmul(a, a)) if (p & 1) res = modmul(res, a); return res; }
+int modpow(int a, int p) { return p ? modmul(modpow(modmul(a, a), p / 2), p & 1 ? a : 1) : 1; }
 
-template<typename T> using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
-template<typename T> using ordered_multiset = tree<T, null_type, less_equal<T>, rb_tree_tag, tree_order_statistics_node_update>;
-template<typename K, typename V> using ordered_map = tree<K, V, less<K>, rb_tree_tag, tree_order_statistics_node_update>;
-template<typename K, typename V> using ordered_multimap = tree<K, V, less<K>, rb_tree_tag, tree_order_statistics_node_update>;
-template<typename T> using pbds_trie = trie<T, null_type, trie_string_access_traits<>, pat_trie_tag, trie_prefix_search_node_update>;
-template<typename T> istream &operator>>(istream &cin, vector<T> &a) { for (auto &x : a) cin >> x; return cin; }
-template<typename K, typename V> istream &operator>>(istream &cin, pair<K, V> &a) { return cin >> a.first >> a.second; }
-template<typename K, typename V> ostream &operator<<(ostream &cout, const pair<K, V> &a) { return cout << a.first << ' ' << a.second; }
-template<typename K, typename V> ostream &operator<<(ostream &cout, const vector<pair<K, V>> &a) { for (auto &x : a) cout << x << '\n'; return cout; }
-template<typename T> ostream &operator<<(ostream &cout, const vector<T> &a) { int n = a.size(); if (!n) return cout; cout << a[0]; for (int i = 1; i < n; i++) cout << ' ' << a[i]; return cout; }
-template<typename T> enable_if_t<is_same_v<T,set<typename T::key_type>>||is_same_v<T,multiset<typename T::key_type>>||is_same_v<T,ordered_set<typename T::key_type>>||is_same_v<T,ordered_multiset<typename T::key_type>>,ostream&>operator<<(ostream&cout,const T&a){for(auto it=a.begin();it!=a.end();++it)cout<<(it==a.begin()?"":" ")<<*it;return cout;}
-template<typename T> enable_if_t<is_same_v<T,map<typename T::key_type,typename T::mapped_type>>||is_same_v<T,multimap<typename T::key_type,typename T::mapped_type>>||is_same_v<T,ordered_map<typename T::key_type,typename T::mapped_type>>||is_same_v<T,ordered_multimap<typename T::key_type,typename T::mapped_type>>,ostream&>operator<<(ostream&cout,const T&a){for(const auto&x:a)cout<<x.first<<' '<<x.second<<'\n';return cout;}
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+template<typename T> inline constexpr bool isPair = false;
+template<typename K, typename V> inline constexpr bool isPair<pair<K,V>> = true;
+template<typename T> using oset = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
+template<typename K, typename V> using omap = tree<K, V, less<K>, rb_tree_tag, tree_order_statistics_node_update>;
+template<typename T> using omultiset = tree<T, null_type, less_equal<T>, rb_tree_tag, tree_order_statistics_node_update>;
+template<typename K, typename V> using omultimap = tree<K, V, less_equal<K>, rb_tree_tag, tree_order_statistics_node_update>;
+template<typename T> istream& operator>>(istream& in, vector<T>& v) { for(auto& x : v) in >> x; return in; }
+template<typename K, typename V> istream& operator>>(istream& in, pair<K,V>& p) { return in >> p.first >> p.second; }
+template<typename K, typename V> ostream& operator<<(ostream& out, const pair<K,V>& p) { return out << p.first << ' ' << p.second; }
+template<typename T> auto operator<<(ostream& out, const T& c)->decltype(c.begin(), out) { using val = typename T::value_type;
+bool shiv = 0; for (const auto& x : c) { if constexpr (isPair<val>) out << x << '\n'; else { if (shiv) out << ' '; out << x; shiv = 1; } } return out; }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 void solve(){
@@ -67,5 +66,4 @@ signed main() {
     while (t--) solve();
     return 0;
 }
-
 ```
