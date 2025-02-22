@@ -1,4 +1,4 @@
-# template
+# Template
 This Is My Competitive Programming Template.
 
 ```
