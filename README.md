@@ -36,18 +36,14 @@ int modsub(int a, int b) { return ((a % MOD) - (b % MOD) + MOD) % MOD; }
 int modfac(int n) { int res = 1; frr(i, 2, n+1) res = modmul(res, i); return res; }
 int modpow(int a, int p) { return p ? modmul(modpow(modmul(a, a), p / 2), p & 1 ? a : 1) : 1; }
 
-template<typename T> inline constexpr bool isPair = false;
-template<typename K, typename V> inline constexpr bool isPair<pair<K,V>> = true;
 template<typename T> using oset = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
-template<typename K, typename V> using omap = tree<K, V, less<K>, rb_tree_tag, tree_order_statistics_node_update>;
-template<typename T> using omultiset = tree<T, null_type, less_equal<T>, rb_tree_tag, tree_order_statistics_node_update>;
-template<typename K, typename V> using omultimap = tree<K, V, less_equal<K>, rb_tree_tag, tree_order_statistics_node_update>;
 template<typename T> istream& operator>>(istream& in, vector<T>& v) { for(auto& x : v) in >> x; return in; }
-template<typename K, typename V> istream& operator>>(istream& in, pair<K,V>& p) { return in >> p.first >> p.second; }
-template<typename K, typename V> ostream& operator<<(ostream& out, const pair<K,V>& p) { return out << p.first << ' ' << p.second; }
-template<typename T> auto operator<<(ostream& out, const T& c)->decltype(c.begin(), out) { using val = typename T::value_type;
-bool shiv = 0; for (const auto& x : c) { if constexpr (isPair<val>) out << x << '\n'; else { if (shiv) out << ' '; out << x; shiv = 1; } } return out; }
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+template<typename K, typename V> istream& operator>>(istream& in, pair<K, V>& p) { return in >> p.first >> p.second; }
+template<typename K, typename V> ostream& operator<<(ostream& out, const pair<K, V>& p) { return out << p.first << ' ' << p.second; }
+template<typename T> struct ispair : false_type {}; template<typename K, typename V> struct ispair<pair<K, V>> : true_type {};
+template<typename T> auto operator<<(ostream& out, const T& c)->decltype(c.begin(), out) { // my custom overload for container streaming
+bool x = 0; for(const auto& i : c) { if(x) out << (ispair<typename T::value_type>::value ? '\n' : ' '); out << i; x = 1; } return out; }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 void solve(){
