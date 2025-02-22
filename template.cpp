@@ -15,7 +15,10 @@ using namespace std;
 #define sz(v) (v.size())
 #define bin(x,y) bitset<y>(x)
 #define all(v) v.begin(), v.end()
+#define fixed(n) fixed << setprecision(n)
 #define srt(v) sort(all(v))
+#define srtr(x) sort(x.rbegin(), x.rend())
+#define srtc(x, c) sort(x.begin(), x.end(), c)
 #define mxe(v) *max_element(all(v))
 #define mne(v) *min_element(all(v))
 #define popcnt(x) __builtin_popcountll(x)
@@ -24,6 +27,8 @@ using namespace std;
 #define frr(i,a,n) for(int i=(a); i<(n); i++)
 #define frb(i, n) for(int i=(n)-1; i>=0; i--)
 #define frrb(i,a,n) for(int i=(n)-1; i>=(a); i--)
+#define vmx(x) *max_element(x.begin(), x.end())
+#define vmn(x) *min_element(x.begin(), x.end())
 #define MOD 1000000007
 
 int modmul(int a, int b) { return ((a % MOD) * (b % MOD)) % MOD; }
