@@ -41,7 +41,7 @@ template<typename T> istream& operator>>(istream& in, vector<T>& v) { for(auto& 
 template<typename K, typename V> istream& operator>>(istream& in, pair<K, V>& p) { return in >> p.first >> p.second; }
 template<typename K, typename V> ostream& operator<<(ostream& out, const pair<K, V>& p) { return out << p.first << ' ' << p.second; }
 template<typename T> struct ispair : false_type {}; template<typename K, typename V> struct ispair<pair<K, V>> : true_type {};
-template<typename T> auto operator<<(ostream& out, const T& c)->decltype(c.begin(), out) { // my custom overload for container streaming
+template<typename T> auto operator<<(ostream& out, const T& c) -> typename enable_if<!is_same<T, string>::value, decltype(c.begin(), out)>::type {
 bool x = 0; for(const auto& i : c) { if(x) out << (ispair<typename T::value_type>::value ? '\n' : ' '); out << i; x = 1; } return out; }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
