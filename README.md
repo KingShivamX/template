@@ -34,21 +34,20 @@ int modmul(int a, int b) { return ((a % MOD) * (b % MOD)) % MOD; }
 int modadd(int a, int b) { return ((a % MOD) + (b % MOD)) % MOD; }
 int modsub(int a, int b) { return ((a % MOD) - (b % MOD) + MOD) % MOD; }
 int modfac(int n) { int res = 1; frr(i, 2, n+1) res = modmul(res, i); return res; }
-int modpow(int a, int p) { return p ? modmul(modpow(modmul(a, a), p / 2), p & 1 ? a : 1) : 1; }
+int modpow(int a, int p) { return p?modmul(modpow(modmul(a, a), p/2), p&1?a:1):1; }
 
-template<typename T> using oset = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
-template<typename T> istream& operator>>(istream& in, vector<T>& v) { for(auto& x : v) in >> x; return in; }
-template<typename K, typename V> istream& operator>>(istream& in, pair<K, V>& p) { return in >> p.first >> p.second; }
-template<typename K, typename V> ostream& operator<<(ostream& out, const pair<K, V>& p) { return out << p.first << ' ' << p.second; }
-template<typename T> struct ispair : false_type {}; template<typename K, typename V> struct ispair<pair<K, V>> : true_type {};
-template<typename T> auto operator<<(ostream& out, const T& c) -> typename enable_if<!is_same<T, string>::value, decltype(c.begin(), out)>::type {
-bool shivam = 0; for(const auto& i : c) { if(shivam) out << (ispair<typename T::value_type>::value ? '\n' : ' '); out << i; shivam = 1; } return out; }
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+template<typename T>istream&operator>>(istream&i,vector<T>&v){for(auto&x:v)i>>x;return i;}
+template<typename K,typename V>istream&operator>>(istream&i,pair<K,V>&p){return i>>p.first>>p.second;}
+template<typename T>struct p:false_type{};template<typename K,typename V>struct p<pair<K,V>>:true_type{};
+template<typename K,typename V>ostream&operator<<(ostream&o,const pair<K,V>&p){return o<<p.first<<' '<<p.second;}
+template<typename T>auto operator<<(ostream&o,const T&c)->enable_if_t<!is_same_v<T,string>,decltype(c.begin(),o)>
+{bool shivam=0; for(auto&i:c) {if(shivam)o<<(p<typename T::value_type>::value?'\n':' ');o<<i;shivam=1;}return o;}
+template<typename T> using ordered = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-void solve(){
+void solve(){   
     
-
 
 
 
