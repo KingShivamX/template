@@ -13,9 +13,9 @@ using namespace std;
 #define vvi vector<vi>
 #define vb vector<bool>
 #define vvb vector<vb>
-#define br cout << "\n"
+#define br cout << '\n'
 #define cn(x) cin >> x
-#define ct(x) cout << x << "\n"
+#define ct(x) cout << x << '\n'
 #define sz(v) (v.size())
 #define bin(x,y) bitset<y>(x)
 #define all(v) v.begin(), v.end()
@@ -23,7 +23,7 @@ using namespace std;
 #define mxe(v) *max_element(all(v))
 #define mne(v) *min_element(all(v))
 #define popcnt(x) __builtin_popcountll(x)
-#define dbg(var) cout<<#var<<"="<<var<<" "
+#define dbg(var) cout<<#var<<'='<<var<<' '
 #define fr(i,n) for(int i=0; i<(n); i++)
 #define frr(i,a,n) for(int i=(a); i<(n); i++)
 #define frb(i, n) for(int i=(n)-1; i>=0; i--)
@@ -46,8 +46,9 @@ template<typename T> using ordered = tree<T, null_type, less<T>, rb_tree_tag, tr
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-void solve(){   
+void solve(){
     
+
 
 
 
