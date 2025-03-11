@@ -19,7 +19,7 @@ using namespace std;
 #define sz(v) (v.size())
 #define bin(x,y) bitset<y>(x)
 #define all(v) v.begin(), v.end()
-#define srt(v) sort(all(v))
+#define rll(v) v.rbegin(), v.rend()
 #define mxe(v) *max_element(all(v))
 #define mne(v) *min_element(all(v))
 #define popcnt(x) __builtin_popcountll(x)
