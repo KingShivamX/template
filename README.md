@@ -11,8 +11,6 @@ using namespace std;
 #define int long long
 #define vi vector<int>
 #define vvi vector<vi>
-#define vb vector<bool>
-#define vvb vector<vb>
 #define br cout << '\n'
 #define cn(x) cin >> x
 #define ct(x) cout << x << '\n'
