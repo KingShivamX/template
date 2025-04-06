@@ -15,7 +15,7 @@ using namespace std;
 #define cn(x) cin >> x
 #define ct(x) cout << x << '\n'
 #define sz(v) (v.size())
-#define bin(x,y) bitset<y>(x)
+#define bin(y,x) bitset<y>(x)
 #define all(v) v.begin(), v.end()
 #define rll(v) v.rbegin(), v.rend()
 #define mxe(v) *max_element(all(v))
