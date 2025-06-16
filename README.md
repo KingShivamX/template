@@ -2,7 +2,7 @@
 This Is My Competitive Programming Template.
 
 ```
-#include "bits/stdc++.h" // KingShivamX //
+#include "bits/stdc++.h" // www.shivam.app //
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
 using namespace __gnu_pbds;
