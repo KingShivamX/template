@@ -20,7 +20,6 @@ using namespace std;
 #define rll(v) v.rbegin(), v.rend()
 #define mxe(v) *max_element(all(v))
 #define mne(v) *min_element(all(v))
-#define popcnt(x) __builtin_popcountll(x)
 #define dbg(var) cout<<#var<<'='<<var<<' '
 #define fr(i,n) for(int i=0; i<(n); i++)
 #define frr(i,a,n) for(int i=(a); i<(n); i++)
