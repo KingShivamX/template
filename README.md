@@ -33,8 +33,9 @@ int modsub(int a, int b) { return ((a % MOD) - (b % MOD) + MOD) % MOD; }
 int modfac(int n) { int res = 1; frr(i, 2, n+1) res = modmul(res, i); return res; }
 int modpow(int a, int p) { return p?modmul(modpow(modmul(a, a), p/2), p&1?a:1):1; }
 
-template<typename T>istream&operator>>(istream&i,vector<T>&v){for(auto&x:v)i>>x;return i;}
 template<typename K,typename V>istream&operator>>(istream&i,pair<K,V>&p){return i>>p.first>>p.second;}
+template<typename T,size_t N>istream&operator>>(istream&i,array<T,N>&a){for(auto&x:a)i>>x;return i;}
+template<typename T>istream&operator>>(istream&i,vector<T>&v){for(auto&x:v)i>>x;return i;}
 template<typename T>struct p:false_type{};template<typename K,typename V>struct p<pair<K,V>>:true_type{};
 template<typename K,typename V>ostream&operator<<(ostream&o,const pair<K,V>&p){return o<<p.first<<' '<<p.second;}
 template<typename T>auto operator<<(ostream&o,const T&c)->enable_if_t<!is_same_v<T,string>,decltype(c.begin(),o)>
